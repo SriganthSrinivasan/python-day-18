@@ -1,40 +1,61 @@
-#Exploring Turtle Program to use its options
-# from turtle import Turtle, Screen
-#
-# karuppi = Turtle()
-# vellachi = Turtle()
-# screen = Screen()
-# screen.screensize(3000,2000)
-# screen.bgpic("space.gif")
-# karuppi.shape("turtle")
-# vellachi.shape("turtle")
-# karuppi.shapesize(1.5, 1.5, 0.5)
-# vellachi.shapesize(1.5, 1.5, 0.5)
-# karuppi.color("DeepSkyBlue", "black")
-# vellachi.color("DeepSkyBlue4", "white")
-# karuppi.speed(1)
-# vellachi.speed(1)
-# vellachi.setheading(180)
-# screen.textinput("Space Turtle", "Enter Username")
-#
-# for i in range(4):
-#     karuppi.forward(100)
-#     vellachi.forward(100)
-#     karuppi.right(90)
-#     vellachi.left(90)
-#
-# screen.exitonclick()
+#Creating Hirst painting using Turtle 10 x 10 art
+import random
+import turtle
+from turtle import Turtle as t, Screen
+turtle.colormode(255)
 
-#Note: To import all the classes from a Module use *
-#example: from turtle import * (Not preffered for long codes)
+# Getting 10 RGB value from an image and save it as (r, g, b) tuples
+# within a list
+# import colorgram
+# rgb_list = []
+# colors = colorgram.extract("hirst.jpg", 20)
+# for i in range(20):
+#     red = (colors[i].rgb).r
+#     green = (colors[i].rgb).g
+#     blue = (colors[i].rgb).b
+#     tuple_list = (red, green, blue)
+#     rgb_list.append(tuple_list)
+# print(rgb_list)
 
-#Note: Its very helpful to create alias for the module
-#example: from turtle import as t
-#you can use t instead of turtle (turtle = t.Turtle())
 
-#Your default python library is small with few modules
-#To access whatever the modules in the world you have to install them in
-#your library
+color_list = [(207, 160, 82), (54, 88, 130), (145, 91, 40),
+              (140, 26, 49), (132, 177, 203), (158, 46, 83),
+              (45, 55, 104), (169, 160, 39), (129, 189, 143),
+              (83, 20, 44), (37, 43, 67), (186, 94, 107),
+              (187, 140, 170), (85, 120, 180), (59, 39, 31)]
 
-import heroes
-print(heroes.gen(5))
+karuppi = t()
+screen = Screen()
+screen.bgcolor("black")
+karuppi.shape("arrow")
+karuppi.shapesize(0.25, 0.25, 0.10)
+karuppi.speed(0)
+
+# My Solution for 10 x 10 art
+# x_pos = 0
+# y_pos = 0
+# for vertical in range(10):
+#     karuppi.setx(x_pos)
+#     karuppi.sety(y_pos)
+#     for horizontal in range(10):
+#         karuppi.fillcolor(random.choice(color_list))
+#         karuppi.begin_fill()
+#         karuppi.circle(5)
+#         karuppi.end_fill()
+#         karuppi.penup()
+#         karuppi.forward(20)
+#     y_pos += 20
+
+# Using dot() solution and making the turtle invisible
+karuppi.isvisible()
+x_pos = 0
+y_pos = 0
+for vertical in range(10):
+    karuppi.setx(x_pos)
+    karuppi.sety(y_pos)
+    for horizontal in range(10):
+        karuppi.dot(10, random.choice(color_list))
+        karuppi.penup()
+        karuppi.forward(20)
+    y_pos += 20
+screen.exitonclick()
